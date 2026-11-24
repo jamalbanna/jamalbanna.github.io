@@ -79,14 +79,14 @@ Vite 8 + vanilla JS. Three.js (custom GLSL) for the hero ribbons, GSAP + ScrollT
 
 ## Open items
 
-1. Domain: `jamal.is-a.dev` (free is-a.dev subdomain). Canonical, og:url, og:image and `public/CNAME` already use it. Jamal must open the is-a.dev pull request himself (their rules forbid AI-written requests): fork is-a-dev/register, add `domains/jamal.json` with a CNAME record to `jamalbanna.github.io`, per the GitHub Pages guide on docs.is-a.dev. Until it is merged the site is not reachable at its domain.
+1. Domain: `jamal.is-a.dev` requested in is-a-dev/register PR #62757 (https://github.com/is-a-dev/register/pull/62757, from fork jamalbanna/register, branch `jamal`; CNAME to jamalbanna.github.io). When it is merged: set the Pages custom domain to `jamal.is-a.dev` (`gh api -X PUT repos/jamalbanna/jamalbanna.github.io/pages -f cname=jamal.is-a.dev`) and tick Enforce HTTPS. Do not set it before the merge.
 2. Country Manager achievements, when Jamal has them. Current lines are general MCP scope, from public AIESEC national compendiums.
 3. Skills table has no languages/frameworks row: Jamal said leave it out for now.
 4. Not tested yet: a real phone, Safari, Firefox.
 
 ## Deployment
 
-Public repo https://github.com/jamalbanna/portfolio, GitHub Pages via Actions (`.github/workflows/deploy.yml`), every push to `main` deploys. Custom domain set to `jamal.is-a.dev` in the Pages settings. Push over HTTPS (SSH key is not set up on this Mac). `.gitignore` keeps `Profile.pdf`, `photo.jpg`, `cook/stills/` and the zip out of the public repo.
+Public repo https://github.com/jamalbanna/jamalbanna.github.io (renamed from `portfolio` so it serves at https://jamalbanna.github.io), GitHub Pages via Actions (`.github/workflows/deploy.yml`), every push to `main` deploys. Custom domain not set yet (see open item 1). Push over HTTPS (SSH key is not set up on this Mac). `.gitignore` keeps `Profile.pdf`, `photo.jpg`, `cook/stills/` and the zip out of the public repo.
 
 ## Quality history
 
