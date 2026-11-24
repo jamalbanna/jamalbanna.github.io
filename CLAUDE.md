@@ -6,7 +6,7 @@ This file carries the full context of the build so any Claude session (on any ac
 
 A personal portfolio site for Jamal Banna. Concept: **"Parallel"**. Every role Jamal has held since 2020 is a line on one shared clock. The hero is a WebGL graph of those lines with a playhead the visitor scrubs; the live count says how many roles were running at that moment ("5 roles running at the same time" today). The same timeline is reused everywhere: each skill, organisation and project shows its own slice of it.
 
-Status (2026-11-24): built, approved through the static and motion gates, content updated with Jamal's own additions. Runs locally. Not deployed, no git repo yet, no domain yet.
+Status (2026-11-24): built, approved, deployed to GitHub Pages; waiting on the is-a.dev domain request.
 
 ## Run it
 
@@ -72,18 +72,21 @@ Vite 8 + vanilla JS. Three.js (custom GLSL) for the hero ribbons, GSAP + ScrollT
 - DevNov: co-founder, CTO and CFO, since September 2026. Products: garage management app, ERP for a sweets business, trading and learning system.
 - Matching platform and CV generator: keep them unnamed.
 - Contact email (public on the site): jamalbanna@gmail.com. LinkedIn: https://www.linkedin.com/in/jamal-banna
+- Women in STEM site: https://womeninstem.aiesec.org/ (the old .net address is dead).
+- No "results" placeholders on projects: Jamal said drop them.
 - No project screenshots: Jamal decided against them. Work panels show each project's own timeline in a frame instead.
 - Photo: background removed on-device with macOS Vision (`cook/tools/cutout.swift`).
 
 ## Open items
 
-1. Women in STEM link `womeninstem.aiesec.net` does not resolve (DNS NXDOMAIN on 2026-11-19). Ask for a new URL or remove the link (`src/data.js`, project `wis`).
-2. "Not supplied yet: results" notes on DevNov, Exchange matching and CV generator. Ask for results or remove the notes.
-3. Skills table placeholder for languages, frameworks and tools (`index.html`, `placeholder-row`).
-4. Domain: canonical and `og:url` are `https://example.com/` in `index.html`.
-5. Country Manager achievements, when Jamal has them.
-6. Not tested yet: a real phone, Safari, Firefox. Everything was measured in Chrome on an Apple M1.
-7. Deployment and git: none yet. Ask before pushing or publishing anything.
+1. Domain: `jamal.is-a.dev` (free is-a.dev subdomain). Canonical, og:url, og:image and `public/CNAME` already use it. Jamal must open the is-a.dev pull request himself (their rules forbid AI-written requests): fork is-a-dev/register, add `domains/jamal.json` with a CNAME record to `jamalbanna.github.io`, per the GitHub Pages guide on docs.is-a.dev. Until it is merged the site is not reachable at its domain.
+2. Country Manager achievements, when Jamal has them. Current lines are general MCP scope, from public AIESEC national compendiums.
+3. Skills table has no languages/frameworks row: Jamal said leave it out for now.
+4. Not tested yet: a real phone, Safari, Firefox.
+
+## Deployment
+
+Public repo https://github.com/jamalbanna/portfolio, GitHub Pages via Actions (`.github/workflows/deploy.yml`), every push to `main` deploys. Custom domain set to `jamal.is-a.dev` in the Pages settings. Push over HTTPS (SSH key is not set up on this Mac). `.gitignore` keeps `Profile.pdf`, `photo.jpg`, `cook/stills/` and the zip out of the public repo.
 
 ## Quality history
 
