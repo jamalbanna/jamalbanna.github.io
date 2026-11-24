@@ -368,3 +368,14 @@ Final desktop run: see cook/stills/final/. Total working time about 165 of 180 m
 - DevNov dated September 2026 ("September 2026", user). Now on the clock; hero counts 5 roles today.
 - User: no screenshots. Work frames are now permanent thread panels (solid border in the project colour, no hatch, no "no screens yet" note). "Screens" removed from DevNov's missing list.
 - Checks: desktop and phone 60 fps, 0 frames over 20 ms, no console errors, overflow 0, hero count 5 on both sizes, build passes.
+
+## Round 12 (full UI review, 11-24)
+
+Asked by Jamal: "review the full ui check if something might" (be broken). Usage 6% of the 5-hour window at the start, so no critic subagents; review by the test tools plus a look at every still.
+Found and fixed:
+- Hero on short laptop screens (1280x720, 1366x768, 1200x630, 1024x700): the stacked legend's last row ("Burger King") ran into the "Mechatronics Engineering" label. Legend now uses two columns when the viewport is 880 px tall or less. At 1024x700 the "then BS Computer Science" label ran 53 px off the left edge; it now starts at the clock's start when it would not fit. Checked by a text-overlap and off-screen probe at 7 sizes: 0 overlaps, 0 off-screen.
+- Work panel stats: a one-line label sat lower than its two-line neighbour (grid row stretch). Fixed with align-content: start.
+- Share image (public/og.png) was stale: 4 roles, no DevNov, old title. Recaptured at 1440x756 with the cursor hidden, scaled to 1200x630.
+Checked, not a bug: a "Skip to content" button in the phone experience stills comes from stitched element screenshots; in a real phone viewport it stays hidden (top -80 px).
+Measured after the fixes: desktop and phone 60 fps, at most 1 frame over 20 ms; overflow 0; no console errors; keyboard playhead works; nav returns after a fast flick; build passes.
+Not checked: real phone, Safari, Firefox (still open).

@@ -675,3 +675,10 @@ h2.is-in .h2-edge { opacity: 0; }
 .frame { border-style: solid; border-color: color-mix(in srgb, var(--c) 40%, transparent); background: color-mix(in srgb, var(--c) 4%, transparent); }
 .frame-bar { border-bottom-style: solid; border-bottom-color: color-mix(in srgb, var(--c) 40%, transparent); color: var(--c); }
 .frame-body { padding-bottom: 18px; }
+
+/* ---------- round 12: stat labels sit right under their number, even when a neighbour's label wraps */
+.panel.framed .figures li { align-content: start; }
+/* short laptop screens (1366x768, 1280x720): the stacked legend ran into the first education label; two columns keep it clear */
+@media (min-width: 701px) and (max-height: 880px) {
+  .hero-graph .legend { grid-template-columns: repeat(2, auto); justify-content: start; column-gap: 28px; row-gap: 6px; }
+}

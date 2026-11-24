@@ -88,7 +88,9 @@ export function renderGraph(svg, w, h, { small = false } = {}) {
     const xs = g.tx(ym(...e1.start));
     s += `<text x="${g.tx(T_FIRST) + 12}" y="${g.y0 - 9}" class="g-mono" font-size="13" fill="${BONE}" fill-opacity=".84" stroke="#0B0C0E" stroke-width="7" stroke-linejoin="round" paint-order="stroke">${e0.what}, ${e0.where}</text>`;
     s += `<line x1="${xs}" y1="${g.y0 - 5}" x2="${xs}" y2="${g.y0 + 5}" stroke="${BONE}" stroke-width="2"/>`;
-    s += `<text x="${xs - 14}" y="${g.y0 + g.pitch * 2.3}" text-anchor="end" class="g-mono" font-size="13" fill="${BONE}" fill-opacity=".84" stroke="#0B0C0E" stroke-width="7" stroke-linejoin="round" paint-order="stroke">then ${e1.what}, ${e1.where}</text>`;
+    // anchor the label's end at the switch; if it would run past the start of the clock, start it there instead
+    const thenLabel = `then ${e1.what}, ${e1.where}`, fits = xs - 14 - thenLabel.length * 8.4 >= g.tx(T_FIRST);
+    s += `<text x="${fits ? xs - 14 : g.tx(T_FIRST) + 12}" y="${g.y0 + g.pitch * 2.3}" text-anchor="${fits ? 'end' : 'start'}" class="g-mono" font-size="13" fill="${BONE}" fill-opacity=".84" stroke="#0B0C0E" stroke-width="7" stroke-linejoin="round" paint-order="stroke">then ${e1.what}, ${e1.where}</text>`;
   }
   let roles = '', ends = '';
   for (const r of DATED) {
