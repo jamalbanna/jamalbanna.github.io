@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Direction A: Parallel</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Martian+Mono:wght@300..700&display=swap" rel="stylesheet">
+<style>
+  :root { --carbon:#0B0C0E; --graphite:#1D2025; --bone:#EFEBE3; --verm:#FF4A1C; --amber:#FFB81A; --ice:#8FD8FF; --steel:#7C828B; }
+  html, body { margin:0; background:var(--carbon); color:var(--bone); }
+  body { width:1600px; height:1000px; position:relative; overflow:hidden; font-family:Archivo, sans-serif; }
+  .nav { position:absolute; left:80px; right:80px; top:38px; display:flex; justify-content:space-between; align-items:baseline; }
+  .nav b { font-weight:650; font-size:17px; font-stretch:112%; letter-spacing:.01em; }
+  .nav span { font-family:"Martian Mono"; font-size:12px; font-weight:400; margin-left:34px; color:rgba(239,235,227,.72); }
+  .intro { position:absolute; left:80px; top:100px; width:760px; font-size:21px; line-height:1.38; font-weight:400; color:rgba(239,235,227,.86); }
+  .cta { position:absolute; right:80px; top:106px; display:flex; gap:12px; }
+  .cta a { font-size:15px; font-weight:600; padding:14px 22px; border-radius:2px; border:1.5px solid var(--bone); }
+  .cta a.fill { background:var(--bone); color:var(--carbon); }
+  svg { position:absolute; left:0; top:0; }
+  .mono { font-family:"Martian Mono"; }
+  .name { position:absolute; left:72px; bottom:44px; font-weight:800; font-stretch:125%; font-size:188px; line-height:.84; letter-spacing:-.035em; }
+  .panel { position:absolute; left:1010px; top:606px; width:510px; }
+  .panel .at { font-family:"Martian Mono"; font-size:12px; color:rgba(239,235,227,.6); }
+  .panel .big { display:flex; align-items:flex-end; gap:18px; margin:6px 0 14px; }
+  .panel .big i { font-style:normal; font-weight:800; font-stretch:125%; font-size:150px; line-height:.78; color:var(--verm); letter-spacing:-.04em; }
+  .panel .big em { font-style:normal; font-size:22px; line-height:1.15; font-weight:500; padding-bottom:4px; }
+  .panel li { list-style:none; font-size:14.5px; line-height:1.72; display:flex; gap:10px; align-items:center; color:rgba(239,235,227,.9); }
+  .panel li u { text-decoration:none; color:rgba(239,235,227,.5); }
+  .panel ul { margin:0; padding:0; border-top:1px solid rgba(239,235,227,.18); padding-top:12px; }
+  .sq { width:9px; height:9px; flex:none; display:inline-block; }
+</style>
+</head>
+<body>
+  <div class="nav"><b>Jamal Banna</b><div><span>about</span><span>skills</span><span>experience</span><span>work</span><span>contact</span></div></div>
+  <p class="intro">Software engineer and Country Manager of AIESEC in Lebanon. Every role I have held since 2020, running on one clock. Move the playhead.</p>
+  <div class="cta"><a class="fill">See the work</a><a>Get in touch</a></div>
+  <svg id="g" width="1600" height="1000"></svg>
+  <div class="name">Jamal<br>Banna</div>
+  <div class="panel">
+    <div class="at">playhead at September 2025</div>
+    <div class="big"><i>7</i><em>roles running<br>at the same time</em></div>
+    <ul id="list"></ul>
+  </div>
+<script>
+const C = { lb:'#FF4A1C', gl:'#FFB81A', en:'#8FD8FF', un:'#EFEBE3', bk:'#7C828B' };
+// [title, org, start y, start m, end y, end m (inclusive, null = present), lane, color]
+const R = [
+  ['Project Coordinator','AIESEC in Lebanon',2023,2,2024,1,-1,'lb'],
+  ['Branch Manager','AIESEC in Lebanon',2024,2,2025,1,-1,'lb'],
+  ['Chair of the Ethics Subcommittee','AIESEC in Lebanon',2024,8,2025,9,-2,'lb'],
+  ['National Director of Technology','AIESEC in Lebanon',2025,1,2026,6,-3,'lb'],
+  ['National Director of Talent Management','AIESEC in Lebanon',2025,7,2026,6,-4,'lb'],
+  ['Country Manager','AIESEC in Lebanon',2026,7,null,null,-1,'lb'],
+  ['Project Manager, Global In-House Development Team','AIESEC',2025,1,null,null,-5,'gl'],
+  ['CURA Project Manager','AIESEC',2025,1,2025,12,-6,'gl'],
+  ['Automation Project Manager','AIESEC',2026,1,null,null,-6,'gl'],
+  ['Head of Information Management Subcommittee','AIESEC',2026,5,null,null,-7,'gl'],
+  ['Cashier, Kitchen Crew','Burger King',2021,7,2022,11,1,'bk'],
+  ['Full-stack Web Developer','AST',2022,8,2022,9,2,'en'],
+  ['Computer Lab IT Assistant','Haigazian University',2023,1,2024,12,1,'un'],
+  ['President, Computer Science Student Society','Haigazian University',2023,3,2024,12,2,'un'],
+  ['Computer Science Tutor','Haigazian University',2023,3,2024,12,3,'un'],
+  ['Software Developer','Profiles Software',2023,8,2023,8,4,'en'],
+  ['Software Engineer','Do360 Digital Construction',2024,6,2025,5,4,'en'],
+  ['Senior Software Engineer','Do360 Digital Construction',2025,6,null,null,4,'en'],
+  ['Lab Instructor and Teaching Assistant','American University of Beirut',2025,1,2026,5,1,'un'],
+];
+const T0 = 2020.45, T1 = 2027.05, X0 = 80, W = 1440, Y0 = 392, P = 24;
+const NOW = 2026 + 10.5/12, PH = 2025 + 8.5/12;
+const tx = t => X0 + (t - T0) / (T1 - T0) * W;
+const ym = (y, m) => y + (m - 1) / 12;
+let s = '';
+// year ticks
+for (let y = 2021; y <= 2026; y++) {
+  s += `<line x1="${tx(y)}" y1="${Y0 - 7.6*P}" x2="${tx(y)}" y2="${Y0 + 5.4*P}" stroke="#EFEBE3" stroke-opacity=".07"/>`;
+  s += `<text x="${tx(y) + 6}" y="${Y0 + 5.4*P}" font-family="Martian Mono" font-size="11" fill="#EFEBE3" fill-opacity=".5">${y}</text>`;
+}
+// trunk
+s += `<line x1="${tx(ym(2020,8))}" y1="${Y0}" x2="${tx(NOW)}" y2="${Y0}" stroke="#EFEBE3" stroke-opacity=".34" stroke-width="2"/>`;
+s += `<circle cx="${tx(ym(2020,8))}" cy="${Y0}" r="4" fill="#EFEBE3"/>`;
+s += `<text x="${tx(ym(2020,8)) + 12}" y="${Y0 - 9}" font-family="Martian Mono" font-size="10.5" fill="#EFEBE3" fill-opacity=".62">Mechatronics Engineering, University of Balamand</text>`;
+s += `<line x1="${tx(ym(2022,8))}" y1="${Y0 - 5}" x2="${tx(ym(2022,8))}" y2="${Y0 + 5}" stroke="#EFEBE3" stroke-width="2"/>`;
+s += `<text x="${tx(ym(2022,8)) - 14}" y="${Y0 + 56}" text-anchor="end" font-family="Martian Mono" font-size="10.5" fill="#EFEBE3" fill-opacity=".62">then BS Computer Science, Haigazian University</text>`;
+s += `<line x1="${tx(ym(2025,1))}" y1="${Y0 - 5}" x2="${tx(ym(2025,1))}" y2="${Y0 + 5}" stroke="#EFEBE3" stroke-width="2"/>`;
+const active = [];
+for (const [title, org, sy, sm, ey, em, lane, c] of R) {
+  const a = tx(ym(sy, sm)), open = ey === null, b = open ? tx(NOW) : tx(ym(ey, em + 1));
+  const y = Y0 + lane * P, k = Math.min(20, (b - a) / 2);
+  let d = `M${a},${Y0} C${a + k*.55},${Y0} ${a + k*.45},${y} ${a + k},${y} `;
+  d += open ? `L${b},${y}` : `L${b - k},${y} C${b - k*.45},${y} ${b - k*.55},${Y0} ${b},${Y0}`;
+  s += `<path d="${d}" fill="none" stroke="${C[c]}" stroke-width="5" stroke-linecap="round"/>`;
+  if (open) s += `<circle cx="${b}" cy="${y}" r="6.5" fill="#0B0C0E" stroke="${C[c]}" stroke-width="3"/>`;
+  const st = ym(sy, sm), en = open ? 9999 : ym(ey, em + 1);
+  if (st <= PH && PH < en) active.push([title, org, y, c]);
+}
+// playhead
+const px = tx(PH);
+s += `<line x1="${px}" y1="${Y0 - 8.2*P}" x2="${px}" y2="${Y0 + 5.9*P}" stroke="#EFEBE3" stroke-width="1.25"/>`;
+s += `<rect x="${px - 39}" y="${Y0 - 8.2*P - 22}" width="78" height="22" fill="#EFEBE3"/>`;
+s += `<text x="${px}" y="${Y0 - 8.2*P - 7}" text-anchor="middle" font-family="Martian Mono" font-size="11" font-weight="600" fill="#0B0C0E">Sep 2025</text>`;
+for (const [, , y, c] of active) s += `<circle cx="${px}" cy="${y}" r="7" fill="${C[c]}" stroke="#0B0C0E" stroke-width="3"/>`;
+// legend
+const L = [['lb','AIESEC in Lebanon'],['gl','AIESEC, global team'],['en','Software engineering'],['un','Universities'],['bk','Before all of it']];
+L.forEach(([c, t], i) => {
+  const y = Y0 - 6.4*P + i * 21;
+  s += `<rect x="80" y="${y - 8}" width="18" height="5" rx="2.5" fill="${C[c]}"/>`;
+  s += `<text x="108" y="${y}" font-family="Martian Mono" font-size="11" fill="#EFEBE3" fill-opacity=".7">${t}</text>`;
+});
+document.getElementById('g').innerHTML = s;
+document.getElementById('list').innerHTML = active.sort((p, q) => p[2] - q[2]).map(([t, o, , c]) => `<li><span class="sq" style="background:${C[c]}"></span>${t} <u>${o}</u></li>`).join('');
+</script>
+</body>
+</html>

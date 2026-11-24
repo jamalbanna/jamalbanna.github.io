@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.DS_Store
+*.zip
+# personal source files, not for a public repo
+Profile.pdf
+photo.jpg
+# 200 MB of review screenshots
+cook/stills/
+.claude/settings.local.json

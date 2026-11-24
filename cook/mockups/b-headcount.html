@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Direction B: Headcount</title>
+<link href="https://fonts.googleapis.com/css2?family=Besley:ital,wght@0,400..900;1,400..900&family=Hanken+Grotesk:wght@300..800&display=swap" rel="stylesheet">
+<style>
+  :root { --paper:#EDF2EB; --ink:#13201A; --green:#1E6B4F; --red:#D8341F; --rule:#B9CDBF; }
+  html, body { margin:0; background:var(--paper); color:var(--ink); }
+  body { width:1600px; height:1000px; position:relative; overflow:hidden; font-family:"Hanken Grotesk", sans-serif; }
+  .nav { position:absolute; left:80px; right:80px; top:36px; display:flex; justify-content:space-between; align-items:baseline; }
+  .nav b { font-family:Besley; font-weight:700; font-size:20px; }
+  .nav span { font-size:15px; font-weight:500; margin-left:34px; }
+  .left { position:absolute; left:80px; top:150px; width:610px; }
+  h1 { font-family:Besley; font-weight:500; font-size:92px; line-height:.98; letter-spacing:-.028em; margin:0; }
+  h1 em { font-style:italic; font-weight:400; color:var(--green); }
+  .left p { font-size:21px; line-height:1.45; margin:34px 0 0; width:520px; }
+  .left p b { color:var(--red); font-weight:700; }
+  .cta { margin-top:36px; display:flex; gap:26px; align-items:center; }
+  .cta a { font-size:16px; font-weight:650; }
+  .cta a.fill { background:var(--ink); color:var(--paper); padding:15px 24px; }
+  .cta a.line { border-bottom:2px solid var(--ink); padding-bottom:3px; }
+  .foot { position:absolute; left:80px; bottom:44px; width:560px; font-size:13.5px; line-height:1.5; color:#4B5F54; }
+  .ledger { position:absolute; left:770px; top:128px; width:750px; border-top:2px solid var(--ink); }
+  .row { display:grid; grid-template-columns:84px 250px 1fr; column-gap:18px; padding:10px 0 11px; border-bottom:1px solid var(--rule); align-items:start; }
+  .row .n { font-family:Besley; font-weight:600; font-size:27px; line-height:1; text-align:right; font-variant-numeric:lining-nums tabular-nums; }
+  .row .d { font-size:13.5px; line-height:1.3; padding-top:3px; }
+  .row .d b { font-weight:700; display:block; }
+  .row.s .d b { display:inline; margin-right:8px; }
+  .row.s .d { padding-top:6px; }
+  .row .d span { color:#4B5F54; }
+  .dots { display:flex; flex-wrap:wrap; gap:3px; padding-top:5px; }
+  .dots i { width:4.5px; height:4.5px; border-radius:50%; background:var(--ink); display:block; }
+  .row.me .n, .row.me .d b { color:var(--red); }
+  .row.me .dots i { background:var(--red); width:12px; height:12px; margin-top:-1px; }
+</style>
+</head>
+<body>
+  <div class="nav"><b>Jamal Banna</b><div><span>About</span><span>Skills</span><span>Experience</span><span>Work</span><span>Contact</span></div></div>
+  <div class="left">
+    <h1>One engineer, and <em>everyone</em> the work was for.</h1>
+    <p>Every dot is one person from a line on my profile: a kid in a Food Heroes lesson, a developer on my team, a new hire I trained. <b>I am the red one.</b></p>
+    <div class="cta"><a class="fill">See the work</a><a class="line">Get in touch</a></div>
+  </div>
+  <div class="foot">Jamal Banna. Senior Software Engineer at Do360 Digital Construction, Country Manager of AIESEC in Lebanon. Figures are the ones stated on my profile, drawn at their minimum.</div>
+  <div class="ledger" id="ledger"></div>
+<script>
+const rows = [
+  [1, '1', 'Me', 'Software engineer', 'me s'],
+  [600, '600+', 'Youth reached', '17 events, Computer Science Student Society'],
+  [550, '550+', 'Children', 'Food Heroes, 2023'],
+  [290, '290+', 'Kids', 'Food Heroes, 11 lessons, 6 schools'],
+  [60, '60+', 'Youth interviewed', 'National recruitment campaign'],
+  [40, '40', 'Youth', 'Youth Speak Forum'],
+  [30, '30', 'Youth', 'Heading for the Future'],
+  [13, '13', 'Members', 'Committee I started at Haigazian'],
+  [11, '11', 'Teammates', 'CS Student Society'],
+  [10, '10', 'New hires trained', 'Burger King'],
+  [8, '8', 'Developers and a designer', 'CURA, from 7 countries'],
+  [7, '7', 'Facilitators trained', 'Food Heroes'],
+];
+document.getElementById('ledger').innerHTML = rows.map(([n, label, a, b, cls]) =>
+  `<div class="row ${cls || (n < 100 ? 's' : '')}"><div class="n">${label}</div><div class="d"><b>${a}</b><span>${b}</span></div><div class="dots">${'<i></i>'.repeat(n)}</div></div>`).join('');
+</script>
+</body>
+</html>
