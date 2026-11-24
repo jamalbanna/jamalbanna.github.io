@@ -354,7 +354,7 @@ Final desktop run: see cook/stills/final/. Total working time about 165 of 180 m
 ## Content update 2 (11-19)
 
 - Photo: background removed on-device with macOS Vision (cook/tools/cutout.swift), cropped 4:5, served as public/jamal.webp (38 kB). Shown on the dark ground with today's threads behind it.
-- Contact: jamalbanna@gmail.com as the main button, LinkedIn beside it; email also in the JSON-LD. Placeholder note removed.
+- Contact: jamalbanna01@gmail.com as the main button, LinkedIn beside it; email also in the JSON-LD. Placeholder note removed.
 - Title: "Head of Information Management Subcommittee, Global".
 - Do360 first year: worked on the same four modules.
 - AUB: course named as CMPS 271.

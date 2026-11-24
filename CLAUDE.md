@@ -71,7 +71,7 @@ Vite 8 + vanilla JS. Three.js (custom GLSL) for the hero ribbons, GSAP + ScrollT
 - Country Manager (MCP): Jamal is new; only two neutral scope lines (leads the national board and local committee presidents; turns global strategy into national direction and represents Lebanon). Add achievements later when he gives them.
 - DevNov: co-founder, CTO and CFO, since September 2026. Products: garage management app, ERP for a sweets business, trading and learning system.
 - Matching platform and CV generator: keep them unnamed.
-- Contact email (public on the site): jamalbanna@gmail.com. LinkedIn: https://www.linkedin.com/in/jamal-banna
+- Contact email (public on the site): jamalbanna01@gmail.com. LinkedIn: https://www.linkedin.com/in/jamal-banna
 - Women in STEM site: https://womeninstem.aiesec.org/ (the old .net address is dead).
 - No "results" placeholders on projects: Jamal said drop them.
 - No project screenshots: Jamal decided against them. Work panels show each project's own timeline in a frame instead.
