@@ -374,7 +374,7 @@ h2 {
 }
 
 @media (max-width: 1020px) {
-  .swipe-hint { display: inline; }
+  .swipe-hint { display: block; }
   .work-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; }
   .work-track::-webkit-scrollbar { display: none; }
   .panel { flex: none; width: min(86vw, 600px); scroll-snap-align: start; padding: 24px 22px 36px var(--pad); align-content: start; }
